@@ -1,0 +1,57 @@
+# Code-
+Code for web service calculator
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Servlet implementation class CalculatorServlet
+ */
+public class CalculatorServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CalculatorServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<html><head><title>Servlet CalculatorServlet</title></head><body>");
+        double n1 = Double.parseDouble(request.getParameter("txtN1"));
+        double n2 = Double.parseDouble(request.getParameter("txtN2"));
+        double result = 0;
+        String opr = request.getParameter("opr");
+        if (opr.equals("+"))
+            result = n1 + n2;
+        if (opr.equals("*"))
+            result = n1 * n2;
+        out.println("<h1> Result = " + result);
+        if (opr.equals("-"))
+            result = n1 - n2;
+        if (opr.equals("/"))
+            result = n1 / n2;
+        out.println("</body></html>");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
