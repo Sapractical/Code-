@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <form action="PalindromeCheckerServlet" method="post">
+        <label for="input">Enter a String: </label>
+        <input type="text" name="input" required><br>
+
+        <input type="submit" value="Check Palindrome">
+    </form>
+</body>
+</html>
