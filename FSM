@@ -1,0 +1,63 @@
+public class FiniteStateMachine {
+    // Define the possible states
+    private enum State {
+        S0, S1, S2, S3
+    }
+
+    // Initialize the current state to S0
+    private State currentState = State.S0;
+
+    // Method to perform a state transition based on the condition x
+    public void performStateTransition(int x) {
+        switch (currentState) {
+            case S0:
+                if (x > 0) {
+                    currentState = State.S1;
+                } else {
+                    currentState = State.S2;
+                }
+                break;
+            case S1:
+                if (x > 0) {
+                    currentState = State.S3;
+                } else {
+                    currentState = State.S2;
+                }
+                break;
+            case S2:
+                if (x > 0) {
+                    currentState = State.S1;
+                } else {
+                    currentState = State.S0;
+                }
+                break;
+            case S3:
+                if (x > 0) {
+                    currentState = State.S3;
+                } else {
+                    currentState = State.S0;
+                }
+                break;
+        }
+    }
+
+    // Get the current state
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public static void main(String[] args) {
+        FiniteStateMachine fsm = new FiniteStateMachine();
+
+        int x = 5; // Replace with your actual condition value
+
+        // Perform state transitions based on the condition x
+        fsm.performStateTransition(x);
+        System.out.println("Current State: " + fsm.getCurrentState());
+
+        x = -3; // Replace with another condition value
+
+        fsm.performStateTransition(x);
+        System.out.println("Current State: " + fsm.getCurrentState());
+    }
+}
